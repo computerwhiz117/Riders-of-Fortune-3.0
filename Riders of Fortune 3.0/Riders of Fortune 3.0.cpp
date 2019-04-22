@@ -4,11 +4,26 @@
 #include "pch.h"
 #include <iostream>
 #include <fstream>
+#include "Player.h"
+#include "Enemy.h"
+#include "Reaper.h"
+#include "Troll.h"
 #include <string>
 using namespace std;
 
+enum Constructor {PlayerXP};
+
+int displayPlayer(const Player &);
+int displayEnemy(const Enemy &);
+
+//int getHP(const Enemy &);
+//int setHP(const Enemy &);
+
 int main()
 {
+
+	Reaper reaper;
+	Troll troll;
 
 	int i;
 	cout << "Welcome to Riders of Fortune 3.0, the open source fantasy text based adventure game." << endl;
@@ -25,6 +40,12 @@ int main()
 		cout << "2. Dismount and explore the current space" << endl;
 		cout << "3. Save your game" << endl;
 		cin >> i;
+
+		if (i == 1)
+		{
+			cout << "You encountered an enemy " << displayEnemy << endl;
+			cin >> i;
+		}
 	}
 	else
 	{
@@ -32,6 +53,16 @@ int main()
 	}
 
 	return 0;
+}
+
+int displayPlayer(const Player &player) {
+	int getHP = 0;
+
+	switch (player.getHP()) {
+	case 0:
+		getHP = 0;
+		break;
+	}
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
