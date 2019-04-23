@@ -4,28 +4,26 @@
 #include "pch.h"
 #include <iostream>
 #include <fstream>
-#include "Player.h"
-#include "Enemy.h"
-#include "Reaper.h"
-#include "Troll.h"
 #include <string>
 using namespace std;
 
-enum Constructor {PlayerXP};
+class Enemy {
+public:
+	double getHP;
+	double setHP;
+};
 
-int displayPlayer(const Player &);
-int displayEnemy(const Enemy &);
+class Player {
+public:
 
-//int getHP(const Enemy &);
-//int setHP(const Enemy &);
+	double PlayerXP;
+};
 
 int main()
 {
 
-	Reaper reaper;
-	Troll troll;
-
 	int i;
+	int battle;
 	cout << "Welcome to Riders of Fortune 3.0, the open source fantasy text based adventure game." << endl;
 	cout << "1. Start the game" << endl;
 	cout << "2. Load previous save" << endl;
@@ -35,7 +33,7 @@ int main()
 	if (1 == 1)
 	{
 		cout << "After exploring the last dungeoun you decided to explore a new dungeoun but while entering in you encountered newer foes" << endl;
-		cout << "Make your choice:";
+		cout << "Make your choice:" << endl;
 		cout << "1. Travel to another space on the board" << endl;
 		cout << "2. Dismount and explore the current space" << endl;
 		cout << "3. Save your game" << endl;
@@ -43,8 +41,53 @@ int main()
 
 		if (i == 1)
 		{
-			cout << "You encountered an enemy " << displayEnemy << endl;
-			cin >> i;
+			Enemy Reaper;
+			double volume = 0.0;
+
+			Reaper.getHP = 2.0;
+
+			Reaper.setHP = 5.0;
+
+
+			volume = Reaper.getHP * Reaper.setHP;
+
+			cout << "Reaper: " << volume <<  endl;
+
+			cout << "I am the Raging Reaper, I seek for new souls which yours will be mine." << endl;
+
+			cin >> battle;
+
+			if (battle > volume)
+			{
+
+
+				Player Yarra;
+
+				Yarra.PlayerXP = 0.0;
+
+				Yarra.PlayerXP = volume - battle;
+
+				cout << "You hit the Reaper" << endl;
+
+				cin >> battle;
+
+				if (volume == 0)
+				{
+					cout << "You have defeated the Reaper" << endl;
+					cout << "Your XP ranked up to " << Yarra.PlayerXP << endl;
+				}
+				else
+				{
+					cout << "I slashed you in half and now your soul is mine" << endl;
+					cout << "GAME OVER!!!!!!!!!!!" << endl;
+				}
+			}
+			else
+			{
+				cout << "I slashed you in half and now your soul is mine" << endl;
+				cout << "GAME OVER!!!!!!!!!!!" << endl;
+			}
+
 		}
 	}
 	else
@@ -53,16 +96,6 @@ int main()
 	}
 
 	return 0;
-}
-
-int displayPlayer(const Player &player) {
-	int getHP = 0;
-
-	switch (player.getHP()) {
-	case 0:
-		getHP = 0;
-		break;
-	}
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
